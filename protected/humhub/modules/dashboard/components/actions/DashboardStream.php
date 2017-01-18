@@ -60,7 +60,7 @@ class DashboardStream extends \humhub\modules\content\components\actions\Stream
                     ->select(["uf.wall_id"])
                     ->from('user_follow')
                     ->leftJoin('user uf', 'uf.id=user_follow.object_id AND user_follow.object_model=:userClass')
-                    ->where('user_follow.user_id=' . $this->user->id . ' AND uf.wall_id IS NOT NULL');
+                    ->where('uf.wall_id IS NOT NULL');
             $union = Yii::$app->db->getQueryBuilder()->build($userFollow)[0];
 
             // User to space follows
